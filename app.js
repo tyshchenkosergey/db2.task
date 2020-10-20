@@ -7,7 +7,6 @@ const app = express();
 const Message = require('./models/message');
 
 //routes
-const indexRoutes = require('./routes/index.js');
 const messageRoutes = require('./routes/message.js');
 
 mongoose
@@ -27,7 +26,6 @@ mongoose
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use(indexRoutes);
 app.use(messageRoutes);
 
 //server

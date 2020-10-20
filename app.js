@@ -3,14 +3,17 @@ const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 
+require('dotenv').config();
+
 //models
 const Message = require('./models/message');
 
 //routes
 const messageRoutes = require('./routes/message.js');
 
+const db = process.env.DATABASE_URL || 'mongodb://localhost/chat';
 mongoose
-  .connect('mongodb://localhost/chat', {
+  .connect(db, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
@@ -29,6 +32,6 @@ app.use(bodyParser.json());
 app.use(messageRoutes);
 
 //server
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log('Server is up!');
 });

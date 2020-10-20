@@ -14,6 +14,6 @@ router.get('/messages', messageController.Message_all);
 router.get('/messages/single/:id', messageController.Message_detail);
 
 // show with pagination route
-router.get('/messages/list/:numPage([0-9]{3})', messageController.Message_list);
+router.get('/messages/list/:pageNum([0-9]{3})', messageController.Message_list);
 
 module.exports = router;

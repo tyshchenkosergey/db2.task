@@ -55,3 +55,7 @@ exports.Message_create = function (req, res) {
     }
   });
 };
+
+exports.Message_wrong = function (req, res) {
+  res.json('Sorry, this is an invalid URL.');
+};

@@ -10,8 +10,8 @@ const Message = require('./models/message');
 
 //routes
 const messageRoutes = require('./routes/message.js');
-// 'mongodb://localhost/chat'
-const db = process.env.DATABASE_URL;
+
+const db = process.env.DATABASE_URL || 'mongodb://localhost/chat';
 mongoose
   .connect(db, {
     useNewUrlParser: true,

@@ -3,6 +3,7 @@ const router = express.Router();
 
 const messageController = require('../controllers/messageController');
 
+router.get('/', messageController.Message);
 // create route.
 router.post('/messages', messageController.Message_create);
 

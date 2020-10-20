@@ -1,5 +1,9 @@
 const Message = require('../models/message');
 
+exports.Message = function (req, res) {
+  res.redirect('/messages');
+};
+
 //Display all Messages.
 exports.Message_all = function (req, res) {
   Message.find({}, (err, allMessages) => {
@@ -24,7 +28,7 @@ exports.Message_detail = function (req, res) {
 
 // Display list of Messages.
 exports.Message_list = function (req, res) {
-    Message.find({})
+  Message.find({})
     .skip(req.params.pageNum * 10)
     .limit(10)
     .exec({}, (err, found) => {

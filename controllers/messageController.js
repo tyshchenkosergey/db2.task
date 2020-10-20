@@ -1,6 +1,6 @@
 const Message = require('../models/message');
 
-//INDEX ROUTE - Display all Messages.
+//Display all Messages.
 exports.Message_all = function (req, res) {
   Message.find({}, (err, allMessages) => {
     if (err) {
@@ -11,7 +11,7 @@ exports.Message_all = function (req, res) {
   });
 };
 
-//SHOW ROUTE - Display detail page for a specific Message.
+//Display detail page for a specific Message.
 exports.Message_detail = function (req, res) {
   Message.findById(req.params.id, (err, foundMessage) => {
     if (err) {
@@ -36,7 +36,7 @@ exports.Message_list = function (req, res) {
     });
 };
 
-// CREATE ROUTE - Handle Message create on POST.
+// Handle Message create on POST.
 exports.Message_create = function (req, res) {
   let newMessage = {
     email: req.body.email,

@@ -10,8 +10,8 @@ const Message = require('./models/message');
 
 //routes
 const messageRoutes = require('./routes/message.js');
-
-const db = process.env.DATABASE_URL || 'mongodb://localhost/chat';
+// 'mongodb://localhost/chat'
+const db = process.env.DATABASE_URL;
 mongoose
   .connect(db, {
     useNewUrlParser: true,
@@ -32,6 +32,6 @@ app.use(bodyParser.json());
 app.use(messageRoutes);
 
 //server
-app.listen(process.env.PORT || 3000, () => {
+app.listen(3000, () => {
   console.log('Server is up!');
 });

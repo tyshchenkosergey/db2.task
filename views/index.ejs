@@ -1,0 +1,10 @@
+<h1>Connected to Room #1</h1>
+<p>email: "hi, potato"</p>
+<p>email: "hello"</p>
+<p>email: "bad idea"</p>
+<% messages.forEach(message=>{ %>
+<p>
+  <%=message.email%>: "<%=message.text%>" <%})%>
+  <a href="/messages/<%=message._id%>">Open</a>
+</p>
+<a href="/messages/new">Send a messsage</a>

@@ -5,20 +5,21 @@ let messageSchema = new mongoose.Schema(
     email: {
       type: String,
       trim: true,
-      unique: true,
       lowercase: true,
-      required: [true, 'Please fill a valid email address'],
-      match: [
-        /[a-zA-Z0-9.-_]{1,}@[a-zA-Z0-9.-]{1,}[.]{1}[a-zA-Z0-9]{2,}/,
-        'Please fill a valid email address',
-      ],
+      unique: true,
+      // required: 'Email address is required',
+      // match: [
+      //   /^[a-zA-Z0-9.-_]{1,}@[a-zA-Z0-9.-]{1,}[.]{1}[a-zA-Z0-9]{2,}$/,
+      //   'Use standart email format',
+      // ],
     },
     text: {
       type: String,
       trim: true,
-      required: [true, 'Type your message'],
-      minlength: 1,
-      maxlength: 100,
+    //   required: "You didn't type any message",
+    //   minlength: 0,
+    //   maxlength: 100,
+    //   match: [/^[^$|\s+]{1,100}$/, 'Use standart text format'],
     },
   },
   { timestamps: true }

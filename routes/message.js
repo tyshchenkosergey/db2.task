@@ -2,12 +2,13 @@ const express = require('express');
 const router = express.Router();
 
 const messageController = require('../controllers/messageController');
+const validation = require('../controllers/validator');
 
 // redirect to index route
 router.get('/', messageController.Message);
 
 // create route.
-router.post('/messages', messageController.Message_create);
+router.post('/messages', validation, messageController.Message_create);
 
 // index route.
 router.get('/messages', messageController.Message_all);

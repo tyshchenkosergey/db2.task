@@ -1,4 +1,5 @@
 const Message = require('../models/message');
+const { validationResult } = require('express-validator');
 
 //Wrong route handler
 exports.Message = function (req, res) {
@@ -43,6 +44,19 @@ exports.Message_list = function (req, res) {
 
 // Handle Message create on POST.
 exports.Message_create = function (req, res) {
+  // [
+  //   check('email').isEmail().withMessage('Invalid email format'),
+  //   check('text')
+  //     .isLength({ min: 1 }, { max: 5 })
+  //     .withMessage('A text must be 1 to 100 characters long :<')
+  //     .isEmpty({ ignore_whitespace: false })
+  //     .withMessage("Text field can't be empty"),
+  // ],
+  // (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
   Message.create(
     {
       email: req.body.email,

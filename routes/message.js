@@ -3,7 +3,9 @@ const router = express.Router();
 
 const messageController = require('../controllers/messageController');
 
+// redirect to index route
 router.get('/', messageController.Message);
+
 // create route.
 router.post('/messages', messageController.Message_create);
 
@@ -11,7 +13,10 @@ router.post('/messages', messageController.Message_create);
 router.get('/messages', messageController.Message_all);
 
 // show route
-router.get('/messages/single/:id', messageController.Message_detail);
+router.get(
+  '/messages/single/:id([0-9a-fA-F]{24})',
+  messageController.Message_detail
+);
 
 // show with pagination route
 router.get(

@@ -1,5 +1,6 @@
 const Message = require('../models/message');
 
+//Wrong route handler
 exports.Message = function (req, res) {
   res.redirect('/messages');
 };
@@ -42,18 +43,19 @@ exports.Message_list = function (req, res) {
 
 // Handle Message create on POST.
 exports.Message_create = function (req, res) {
-  let newMessage = {
-    email: req.body.email,
-    text: req.body.text,
-  };
-  Message.create(newMessage, (err, newMessage) => {
-    if (err) {
-      res.json(err.message);
-      console.log(err);
-    } else {
-      res.json(newMessage);
+  Message.create(
+    {
+      email: req.body.email,
+      text: req.body.text,
+    },
+    (err, message) => {
+      if (err) {
+        res.json(err);
+      } else {
+        res.json(message);
+      }
     }
-  });
+  );
 };
 
 exports.Message_wrong = function (req, res) {

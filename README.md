@@ -3,9 +3,13 @@ The API lets unauthenticated users read alredy posted messages and post their ow
 API methods:
 
 GET - View all messages
+/messages
 
-GET - View single message by unique identifier 
+GET - View single message by unique identifier
+/messages/single/:id
 
-GET - View all messages grouped by 10 per request 
+GET - View all messages grouped by 10 per request
+/messages/list/:pageNum
 
 POST - Add new messages
+/message

@@ -20,10 +20,7 @@ router.get(
 );
 
 // show with pagination route
-router.get(
-  '/messages/list/:pageNum([0-9]{1,3})',
-  messageController.Message_list
-);
+router.get('/messages/list/:pageNum([0-9])', messageController.Message_list);
 
 //other routes here
 router.get('*', messageController.Message_wrong);

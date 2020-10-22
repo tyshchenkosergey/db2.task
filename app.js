@@ -5,9 +5,6 @@ const app = express();
 
 require('dotenv').config();
 
-//models
-const Message = require('./models/message');
-
 //routes
 const messageRoutes = require('./routes/message.js');
 

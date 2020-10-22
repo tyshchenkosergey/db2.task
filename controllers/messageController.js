@@ -10,9 +10,9 @@ exports.Message = function (req, res) {
 exports.Message_all = function (req, res) {
   Message.find({}, (err, allMessages) => {
     if (err) {
-      res.json(err);
+      res.status(400).json(err);
     } else {
-      res.json(allMessages);
+      res.status(200).json(allMessages);
     }
   });
 };
@@ -21,9 +21,9 @@ exports.Message_all = function (req, res) {
 exports.Message_detail = function (req, res) {
   Message.findById(req.params.id, (err, foundMessage) => {
     if (err) {
-      res.json(err);
+      res.status(400).json(err);
     } else {
-      res.json(foundMessage);
+      res.status(200).json(foundMessage);
     }
   });
 };
@@ -35,24 +35,15 @@ exports.Message_list = function (req, res) {
     .limit(10)
     .exec({}, (err, found) => {
       if (err) {
-        res.json(err);
+        res.status(400).json(err);
       } else {
-        res.json(found);
+        res.status(200).json(found);
       }
     });
 };
 
 // Handle Message create on POST.
 exports.Message_create = function (req, res) {
-  // [
-  //   check('email').isEmail().withMessage('Invalid email format'),
-  //   check('text')
-  //     .isLength({ min: 1 }, { max: 5 })
-  //     .withMessage('A text must be 1 to 100 characters long :<')
-  //     .isEmpty({ ignore_whitespace: false })
-  //     .withMessage("Text field can't be empty"),
-  // ],
-  // (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
@@ -64,14 +55,14 @@ exports.Message_create = function (req, res) {
     },
     (err, message) => {
       if (err) {
-        res.json(err);
+        res.status(400).json(err);
       } else {
-        res.json(message);
+        res.status(200).json(message);
       }
     }
   );
 };
 
 exports.Message_wrong = function (req, res) {
-  res.json('Sorry, this is an invalid URL.');
+  res.status(404).json('Sorry, page not found');
 };

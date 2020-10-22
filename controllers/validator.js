@@ -1,5 +1,4 @@
 const { check } = require('express-validator');
-const { default: validator } = require('validator');
 
 const validation = [
   check('email')

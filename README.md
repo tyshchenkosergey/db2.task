@@ -13,3 +13,5 @@ GET - View all messages grouped by 10 per request
 
 POST - Add new messages
 /message
+
+Please refer to the documentation on https://documenter.getpostman.com/view/11931541/TVYCAKn3
